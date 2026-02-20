@@ -37,14 +37,24 @@ def add(a: int, b: int):
         """This is an addition function that adds 2 numbers together"""
         return a+b
 
-tools = [add]
+@tool
+def substract(a: int, b: int):
+        """Substraction function"""
+        return a-b
+@tool
+
+def multiplication(a: int, b: int):
+        """multiplication function"""
+        return a*b
+
+tools = [add, substract, multiplication]
 
 model = ChatGroq(model="llama-3.3-70b-versatile").bind_tools(tools)
 
 # LLM calling function
 def model_call(state: AgentState) -> AgentState:
         message = state["messages"]
-        SYSTEM_PROMPT="You are my AI assistant, please answer my query to the best of your ability."
+        SYSTEM_PROMPT="You are my AI assistant, please answer my query to the best of your ability. If the input query showed multiple task do one by one and give tool result first."
         system_message = [SystemMessage(content=SYSTEM_PROMPT)] + state["messages"]
 
         response = model.invoke(system_message)
@@ -93,5 +103,5 @@ def print_stream(stream):
 
 
 # inputs = {"messages":[("user", "Add 3 + 4.")]}
-inputs = {"messages":"Add 3 + 4."}
+inputs = {"messages":"Add 43 + 34 and then multiply the result by 6. Also tell me a joke."}
 print_stream(app.stream(inputs, stream_mode="values"))
