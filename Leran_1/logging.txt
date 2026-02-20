@@ -1,0 +1,45 @@
+Your Conversation Log:
+You: Hi
+AI: It's nice to meet you. Is there something I can help you with or would you like to chat?
+
+You: My name is Ritun
+AI: Nice to meet you, Ritun! It's lovely to have you here. How's your day going so far?
+
+You: What is my name?
+AI: Your name is Ritun. You told me that just a moment ago!
+
+You: Tell me a joke
+AI: Here's one:
+
+What do you call a fake noodle?
+
+An impasta!
+
+Hope that made you laugh, Ritun! Do you want to hear another one?
+
+You: yes
+AI: Here's another one:
+
+Why couldn't the bicycle stand up by itself?
+
+(Wait for it...)
+
+Because it was two-tired!
+
+Hope that one made you smile, Ritun! Do you want to hear another joke?
+
+You: yes one more
+AI: Here's another one:
+
+What do you call a group of cows playing instruments?
+
+(Wait for it...)
+
+A moo-sical band!
+
+Hope that one struck a chord with you, Ritun! It was nice chatting with you! If you want more jokes or just want to talk, feel free to come back anytime!
+
+You: oky by talk to later
+AI: It was great chatting with you, Ritun! You have a great day and I'll talk to you later! Bye for now!
+
+End of Conversation

@@ -111,6 +111,10 @@ with open("logging.txt", "w") as file:
 
 print("Conversation saved to logging.txt")
 
+"""Because of the state get increase it's token size and
+Context window is limited I take only 5 state messages 
+and rest of are removed this way I'll code"""
+
 
 
 
