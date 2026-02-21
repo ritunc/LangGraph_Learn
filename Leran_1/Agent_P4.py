@@ -62,6 +62,35 @@ def our_agent(state: AgentState) -> AgentState:
 
         """
         system_prompt = [SystemMessage(content=SYSTEM_PROMPT)] + state["messages"]
-        response = model.invoke(system_prompt)
-        return {"messages":[response]}
+        # response = model.invoke(system_prompt)
+        # return {"messages":[response]}
+        if not state["messages"]:
+                user_input = "I'm ready to help you update a document. What would you like to create?"
+                user_message = HumanMessage(content=user_input)
+        else:
+                user_input = input("\nWhat would you like to do with the document?")
+                print(f"\n 👤USER: {user_input}")
+                user_message = HumanMessage(content=user_input)
+        
+        all_messages = [system_prompt] + [user_message]
 
+        response = model.invoke(all_messages)
+        prnt(f"\n🤖 AI: {response.content}")
+        if hasattr(response, "tool_calls") and response.tool_calls:
+                print(f"🛠️ USING TOOLS: {[tc['name'] for tc in response.tool_calls]}")
+        
+        return {"messages": list(state["messages"]) + [user_message, response]}
+
+def should_continue(state: AgentState) -> str:
+        """Determine if we should continue or end the conversation. """
+        response = state["messages"]
+        last_messg = response[-1]
+        if not last_messg.tool_calls:
+                return "end"
+        else:
+                return "continue"
+        
+graph = StateGraph(AgentState)
+
+graph.add_node("agent", our_agent)
+graph

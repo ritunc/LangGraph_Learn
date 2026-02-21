@@ -42,7 +42,6 @@ def substract(a: int, b: int):
         """Substraction function"""
         return a-b
 @tool
-
 def multiplication(a: int, b: int):
         """multiplication function"""
         return a*b
