@@ -102,5 +102,5 @@ def print_stream(stream):
 
 
 # inputs = {"messages":[("user", "Add 3 + 4.")]}
-inputs = {"messages":"Add 43 + 34 and then multiply the result by 6. Also tell me a joke."}
+inputs = {"messages":"tell me a joke."}
 print_stream(app.stream(inputs, stream_mode="values"))
