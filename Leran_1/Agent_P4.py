@@ -61,7 +61,8 @@ def our_agent(state: AgentState) -> AgentState:
         The current document content is:{document_content}
 
         """
-        system_prompt = [SystemMessage(content=SYSTEM_PROMPT)] + state["messages"]
+        # system_prompt = [SystemMessage(content=SYSTEM_PROMPT)] + state["messages"]
+        system_prompt = SystemMessage(content=SYSTEM_PROMPT)
         # response = model.invoke(system_prompt)
         # return {"messages":[response]}
         if not state["messages"]:
@@ -72,7 +73,7 @@ def our_agent(state: AgentState) -> AgentState:
                 print(f"\n 👤USER: {user_input}")
                 user_message = HumanMessage(content=user_input)
         
-        all_messages = system_prompt + [user_message]
+        all_messages = [system_prompt] + list(state["messages"]) + [user_message]
 
         response = model.invoke(all_messages)
         print(f"\n🤖 AI: {response.content}")
